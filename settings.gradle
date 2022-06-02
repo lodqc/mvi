@@ -1,0 +1,4 @@
+rootProject.name = "mvi"
+include ':app'
+include ':mvi-core'
+include ':mvi-net'

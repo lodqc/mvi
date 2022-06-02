@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+    id 'maven-publish'
+}
+android {
+    compileSdk 32
+
+    defaultConfig {
+        minSdk 21
+        targetSdk 32
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.4.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.4.1")
+    implementation "androidx.startup:startup-runtime:1.1.0"
+    //基于mmap的数据存储
+    implementation 'com.tencent:mmkv:1.2.13'
+    //刷新和加载更多相关
+    implementation 'androidx.paging:paging-runtime:3.1.0-alpha02'
+    implementation  'io.github.scwang90:refresh-layout-kernel:2.0.5'
+    implementation  'io.github.scwang90:refresh-header-classics:2.0.5'
+    implementation  'io.github.scwang90:refresh-footer-classics:2.0.5'
+    //log库
+    implementation 'com.elvishew:xlog:1.10.0'
+}
+
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'com.immotor.albert.mvicore'
+//---------------------------------------------上传源码dev环境放开
+// 指定编码
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// 打包源码
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
+}
+
+task javadoc(type: Javadoc) {
+    failOnError  false
+    source = android.sourceSets.main.java.sourceFiles
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+    classpath += configurations.compile
+}
+
+// 制作文档(Javadoc)
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+artifacts {
+    archives sourcesJar
+    archives javadocJar
+}

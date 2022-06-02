@@ -1,0 +1,7 @@
+<resources>
+    <string name="error_no_internet">Please check your internet connection</string>
+    <string name="error_network">Network error, could get data, please try again!</string>
+    <string name="error_empty">Network no response</string>
+    <string name="error_unknown">Network error unknown</string>
+    <string name="error_download">Download error, please try again latter!</string>
+</resources>

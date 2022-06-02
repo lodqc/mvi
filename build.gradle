@@ -1,0 +1,38 @@
+buildscript {
+    ext.hilt_version = "2.42"
+    ext.kotlin_version = '1.6.10'
+    repositories {
+        //阿里云代理
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
+}
+allprojects {
+    repositories {
+        //阿里云代理
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven {
+            url "https://jitpack.io"
+            credentials {
+                username = "jp_fbmptjjvs44jk8uhio1b8kiqov"
+            }
+        }
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

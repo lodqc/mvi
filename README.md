@@ -23,5 +23,5 @@ android.injected.testOnly=false
 android.jetifier.blacklist = com.squareup.moshi
 
 #### 打赏
+![1654137846402_ B@5edca20](https://user-images.githubusercontent.com/53686290/171559448-455934fa-3ae1-429a-9f06-dcdb6d218f4d.jpg)
 
-![输入图片说明](1654137846402_%5BB@5edca20.jpg)

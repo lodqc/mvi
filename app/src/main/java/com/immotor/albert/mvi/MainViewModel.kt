@@ -1,6 +1,5 @@
 package com.immotor.albert.mvi
 
-import androidx.lifecycle.viewModelScope
 import com.immotor.albert.mvi.data.repository.MainRepository
 import com.immotor.albert.mvicore.base.BaseViewModel
 import com.immotor.albert.mvicore.setState
